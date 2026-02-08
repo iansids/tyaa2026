@@ -127,10 +127,11 @@ export const CandidatesPage = () => {
     return contestants.filter((c) => c.college === selectedCollege);
   }, [selectedCollege]);
 
-  // For the seamless loop, we double the content
-  const marqueeItems = [...contestants, ...contestants];
+  // For the seamless loop, we quadruple the content
+  const marqueeItems = [...contestants, ...contestants, ...contestants, ...contestants];
 
   return (
+
     <div className="w-full bg-[#0a1f1a] min-h-screen text-stone-200 selection:bg-[#d4af37]/30 overflow-x-hidden">
       
       {/* SECTION 1: INFINITE SEAMLESS HERO */}
@@ -161,68 +162,42 @@ export const CandidatesPage = () => {
         </div>
     </div>
 
-    {/* THE SEAMLESS MARQUEE - 3 Row Candidate Images */}
+    {/* THE SEAMLESS MARQUEE - Truly Offset Rows */}
     <div className="absolute inset-0 z-10 opacity-30 flex flex-col items-stretch pointer-events-none overflow-hidden">
-      {/* Row 1 */}
-      <div className="flex-1 flex w-full overflow-hidden">
-        <div className="flex w-max animate-marquee-seamless" style={{ animationDelay: '0s' }}>
-        {marqueeItems.map((candidate, idx) => (
+    {[
+        { id: 'top', speed: '120s', direction: 'animate-marquee-forward', delay: '-2s' },
+        { id: 'mid', speed: '240s', direction: 'animate-marquee-backward', delay: '-15s' },
+        { id: 'bot', speed: '120s', direction: 'animate-marquee-forward', delay: '-8s' }
+    ].map((row) => (
+        <div key={row.id} className="flex-1 flex w-full overflow-hidden border-b border-white/5">
+        <div 
+            className={`flex gap-0 w-max ${row.direction}`}
+            style={{ 
+            animationDuration: row.speed,
+            animationDelay: row.delay,
+            // Ensuring hardware acceleration for smooth movement
+            willChange: 'transform'
+            }}
+        >
+            {marqueeItems.map((candidate, idx) => (
             <div 
-            key={`row1-${idx}`}
-            className="relative h-full flex-shrink-0 transition-all duration-500 overflow-hidden bg-[#081612] flex items-center justify-center"
-            style={{ width: '20%', minWidth: '200px' }}
+                key={`${row.id}-${idx}`}
+                className="relative h-full flex-shrink-0 overflow-hidden bg-[#081612]"
+                style={{ width: '25vw', minWidth: '280px' }}
             >
-            <img
-              src={candidate.image}
-              alt={candidate.name}
-              className="w-full h-full object-contain hover:scale-110 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a1f1a]/40 via-transparent to-[#0a1f1a]/40"></div>
+                <img
+                src={candidate.image}
+                alt={candidate.name}
+                className="w-full h-full object-cover grayscale-[0.2] brightness-90"
+                />
+                <div className="absolute inset-0 bg-[#0a1f1a]/10"></div>
             </div>
-        ))}
+            ))}
         </div>
-      </div>
-
-      {/* Row 2 */}
-      <div className="flex-1 flex w-full overflow-hidden">
-        <div className="flex w-max animate-marquee-seamless" style={{ animationDelay: '-20s' }}>
-        {marqueeItems.map((candidate, idx) => (
-            <div
-            key={`row2-${idx}`}
-            className="relative h-full flex-shrink-0 transition-all duration-500 overflow-hidden bg-[#081612] flex items-center justify-center"
-            style={{ width: '20%', minWidth: '200px' }}
-            >
-            <img
-              src={candidate.image}
-              alt={candidate.name}
-              className="w-full h-full object-contain hover:scale-110 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a1f1a]/40 via-transparent to-[#0a1f1a]/40"></div>
-            </div>
-        ))}
         </div>
-      </div>
-
-      {/* Row 3 */}
-      <div className="flex-1 flex w-full overflow-hidden">
-        <div className="flex w-max animate-marquee-seamless" style={{ animationDelay: '-40s' }}>
-        {marqueeItems.map((candidate, idx) => (
-            <div
-            key={`row3-${idx}`}
-            className="relative h-full flex-shrink-0 transition-all duration-500 overflow-hidden bg-[#081612] flex items-center justify-center"
-            style={{ width: '20%', minWidth: '200px' }}
-            >
-            <img
-              src={candidate.image}
-              alt={candidate.name}
-              className="w-full h-full object-contain hover:scale-110 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a1f1a]/40 via-transparent to-[#0a1f1a]/40"></div>
-            </div>
-        ))}
-        </div>
-      </div>
+    ))}
     </div>
+
     </section>
 
       {/* SECTION 2: THE REGISTRY GALLERY */}
@@ -294,7 +269,7 @@ export const CandidatesPage = () => {
             {filteredContestants.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-4 sm:gap-x-6 md:gap-x-12 gap-y-12 sm:gap-y-16 md:gap-y-24">
                 {filteredContestants.map((candidate) => (
-                  <Link key={candidate.id} to={`/candidates/${candidate.id}`} className="group">
+                  <Link key={candidate.id} to={`/candidates/${candidate.id}`} className="group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} >
                     {/* GILDED IMAGE FRAME */}
                     <div className="relative aspect-[3/4] overflow-hidden bg-[#081612] border border-white/5 transition-all duration-1000 group-hover:border-[#d4af37]/40 group-hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)]">
                       {/* Candidate Image */}
@@ -342,19 +317,36 @@ export const CandidatesPage = () => {
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes marquee-seamless {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
+     <style dangerouslySetInnerHTML={{ __html: `
+        /* Path for Rows 1 and 3 */
+        @keyframes marqueeForward {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
-        .animate-marquee-seamless {
-          animation: marquee-seamless 15s linear infinite;
+        
+        /* Explicit Path for Row 2 (Middle) */
+        @keyframes marqueeBackward {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
         }
-        /* Prevents flicker on some browsers */
+
+        .animate-marquee-forward {
+            animation: marqueeForward linear infinite;
+        }
+
+        .animate-marquee-backward {
+            animation: marqueeBackward linear infinite;
+        }
+
         .w-max {
-          width: max-content;
+            width: max-content;
         }
-      `}} />
+
+        .animate-marquee-forward, .animate-marquee-backward {
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+        `}} />
     </div>
   );
 };
