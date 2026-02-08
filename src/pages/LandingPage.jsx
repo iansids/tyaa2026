@@ -25,12 +25,12 @@ export const LandingPage = () => {
 
           {/* Headline */}
           <div className="space-y-2">
-            <span className={`text-2xl font-serif font-black leading-tight block ${goldText}`}>
+            <span className={`text-4xl font-serif font-black leading-tight block ${goldText}`}>
               Thomasian Youth
             </span>
             
             <div className="flex flex-col items-center gap-1">
-              <span className="text-xs font-serif font-light text-white tracking-wide flex items-center gap-1 flex-wrap justify-center">
+              <span className="text-sm font-serif font-light text-white tracking-wide flex items-center gap-1 flex-wrap justify-center">
                 <span className="italic">Ambassador</span>
                 <span className="text-[#d4af37]">&</span>
                 <span className="italic">Ambassadress</span>
