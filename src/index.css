@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e4d42;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4b38a;
+  border-radius: 4px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
