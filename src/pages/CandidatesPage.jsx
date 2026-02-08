@@ -176,34 +176,47 @@ export const CandidatesPage = () => {
       <div className="max-w-[1600px] mx-auto px-6 py-32">
         <div className="flex flex-col lg:flex-row gap-20 items-start">
           
-          {/* SIDEBAR */}
-          <aside className="lg:w-80 w-full lg:sticky lg:top-32 space-y-12">
-            <div className="space-y-8">
-              <div className="flex items-center gap-4">
-                <h3 className="text-[#d4af37] text-[11px] uppercase tracking-[5px] font-black">Institutions</h3>
-                <div className="h-[1px] flex-1 bg-gradient-to-r from-[#d4af37]/40 to-transparent"></div>
-              </div>
-              
-              <nav className="flex flex-col">
-                {colleges.map((college) => (
-                  <button
-                    key={college}
-                    onClick={() => setSelectedCollege(college)}
-                    className={`group flex items-center justify-between py-4 px-4 transition-all duration-500 border-l ${
-                      selectedCollege === college
-                        ? 'border-[#d4af37] bg-[#d4af37]/5 text-[#d4af37]'
-                        : 'border-white/5 text-stone-500 hover:text-stone-300 hover:border-stone-700'
-                    }`}
-                  >
-                    <span className={`text-[11px] uppercase tracking-[3px] font-bold ${selectedCollege === college ? 'translate-x-2' : ''} transition-transform duration-500`}>
-                      {college}
-                    </span>
-                    {selectedCollege === college && <span className="text-[10px]">✦</span>}
-                  </button>
-                ))}
-              </nav>
-            </div>
-          </aside>
+        {/* SIDEBAR */}
+        <aside className="lg:w-96 w-full lg:sticky lg:top-32 space-y-12">
+  <div className="space-y-8">
+    {/* Header Section: Left Aligned */}
+    <div className="flex items-center gap-4 px-4">
+      <h3 className="text-[#d4af37] text-[11px] uppercase tracking-[5px] font-black whitespace-nowrap">
+        Institutions
+      </h3>
+      <div className="h-[1px] flex-1 bg-gradient-to-r from-[#d4af37]/40 to-transparent"></div>
+    </div>
+    
+    <nav className="flex flex-col">
+      {colleges.map((college) => (
+        <button
+          key={college}
+          onClick={() => setSelectedCollege(college)}
+          className={`group relative flex items-start gap-4 py-5 px-6 transition-all duration-500 border-l-2 ${
+            selectedCollege === college
+              ? 'border-[#d4af37] bg-[#d4af37]/5 text-[#d4af37]'
+              : 'border-white/5 text-stone-500 hover:text-stone-300 hover:border-stone-700'
+          }`}
+        >
+          {/* Active Indicator: Left Aligned */}
+          <span className={`mt-0.5 text-[10px] transition-all duration-500 flex-shrink-0 ${
+            selectedCollege === college ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+          }`}>
+            ✦
+          </span>
+
+          {/* College Name: Left Aligned and Wrapped */}
+          <span className={`
+            text-[11px] uppercase tracking-[2px] font-bold text-left leading-relaxed transition-transform duration-500
+            ${selectedCollege === college ? 'translate-x-0' : '-translate-x-2'}
+          `}>
+            {college}
+          </span>
+        </button>
+      ))}
+    </nav>
+  </div>
+</aside>
 
           {/* MAIN GRID */}
           <main className="flex-1">
