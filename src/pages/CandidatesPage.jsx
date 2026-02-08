@@ -9,7 +9,8 @@ export const contestants = [
     college: "Faculty of Engineering", 
     initials: "AW", 
     gender: "male", 
-    bio: "A visionary leader committed to sustainable innovation and the integration of green technology in urban development." 
+    bio: "A visionary leader committed to sustainable innovation and the integration of green technology in urban development.",
+    image: "/images/candidates/alexkaplanphoto_a_male_business_headshots_shot_outdoors_in_offi_9a228509-0f9a-438c-aeab-ab8dce7f414b.webp"
   },
   { 
     id: 2, 
@@ -17,7 +18,8 @@ export const contestants = [
     college: "Faculty of Medicine and Surgery", 
     initials: "SV", 
     gender: "female", 
-    bio: "Advocating for accessible healthcare and empathetic leadership through community-based medical missions." 
+    bio: "Advocating for accessible healthcare and empathetic leadership through community-based medical missions.",
+    image: "/images/candidates/business-headshot-example-2.webp"
   },
   { 
     id: 3, 
@@ -25,7 +27,8 @@ export const contestants = [
     college: "College of Architecture", 
     initials: "JD", 
     gender: "male", 
-    bio: "Designing inclusive spaces that foster community growth and preserve cultural heritage in the modern era." 
+    bio: "Designing inclusive spaces that foster community growth and preserve cultural heritage in the modern era.",
+    image: "/images/candidates/images.jpeg"
   },
   { 
     id: 4, 
@@ -33,7 +36,8 @@ export const contestants = [
     college: "Faculty of Arts & Letters", 
     initials: "IC", 
     gender: "female", 
-    bio: "Championing the power of literature and communication to bridge social divides and amplify marginalized voices." 
+    bio: "Championing the power of literature and communication to bridge social divides and amplify marginalized voices.",
+    image: "/images/candidates/alexkaplanphoto_a_male_business_headshots_shot_outdoors_in_offi_9a228509-0f9a-438c-aeab-ab8dce7f414b.webp"
   },
   { 
     id: 5, 
@@ -41,7 +45,8 @@ export const contestants = [
     college: "College of Science", 
     initials: "MC", 
     gender: "male", 
-    bio: "Exploring the frontiers of biotechnology to solve food security challenges and advance molecular research." 
+    bio: "Exploring the frontiers of biotechnology to solve food security challenges and advance molecular research.",
+    image: "/images/candidates/business-headshot-example-2.webp"
   },
   { 
     id: 6, 
@@ -49,7 +54,8 @@ export const contestants = [
     college: "College of Education", 
     initials: "ER", 
     gender: "female", 
-    bio: "Transforming the pedagogical landscape through digital literacy and inclusive classroom management strategies." 
+    bio: "Transforming the pedagogical landscape through digital literacy and inclusive classroom management strategies.",
+    image: "/images/candidates/images.jpeg"
   },
   { 
     id: 7, 
@@ -57,7 +63,8 @@ export const contestants = [
     college: "College of Commerce and Business Administration", 
     initials: "NT", 
     gender: "male", 
-    bio: "Redefining ethical business practices and promoting social entrepreneurship as a catalyst for national progress." 
+    bio: "Redefining ethical business practices and promoting social entrepreneurship as a catalyst for national progress.",
+    image: "/images/candidates/alexkaplanphoto_a_male_business_headshots_shot_outdoors_in_offi_9a228509-0f9a-438c-aeab-ab8dce7f414b.webp"
   },
   { 
     id: 8, 
@@ -65,7 +72,8 @@ export const contestants = [
     college: "Conservatory of Music", 
     initials: "CB", 
     gender: "female", 
-    bio: "Bridging classical traditions with contemporary soul to create music that heals and inspires the modern spirit." 
+    bio: "Bridging classical traditions with contemporary soul to create music that heals and inspires the modern spirit.",
+    image: "/images/candidates/business-headshot-example-2.webp"
   },
   { 
     id: 9, 
@@ -73,7 +81,8 @@ export const contestants = [
     college: "College of Nursing", 
     initials: "DV", 
     gender: "male", 
-    bio: "Dedicated to the art of caregiving and elevating the standards of patient advocacy in emergency medicine." 
+    bio: "Dedicated to the art of caregiving and elevating the standards of patient advocacy in emergency medicine.",
+    image: "/images/candidates/images.jpeg"
   },
   { 
     id: 10, 
@@ -81,7 +90,8 @@ export const contestants = [
     college: "College of Fine Arts and Design", 
     initials: "GS", 
     gender: "female", 
-    bio: "Utilizing visual storytelling and multi-media installations to provoke dialogue on environmental conservation." 
+    bio: "Utilizing visual storytelling and multi-media installations to provoke dialogue on environmental conservation.",
+    image: "/images/candidates/alexkaplanphoto_a_male_business_headshots_shot_outdoors_in_offi_9a228509-0f9a-438c-aeab-ab8dce7f414b.webp"
   },
   { 
     id: 11, 
@@ -89,7 +99,8 @@ export const contestants = [
     college: "Faculty of Civil Law", 
     initials: "SV", 
     gender: "male", 
-    bio: "An aspiring jurist focused on human rights defense and the modernization of judicial transparency." 
+    bio: "An aspiring jurist focused on human rights defense and the modernization of judicial transparency.",
+    image: "/images/candidates/business-headshot-example-2.webp"
   },
   { 
     id: 12, 
@@ -97,7 +108,8 @@ export const contestants = [
     college: "College of Information and Computing Sciences", 
     initials: "AO", 
     gender: "female", 
-    bio: "Developing ethical AI solutions and advancing cyber-security frameworks for the protection of digital identities." 
+    bio: "Developing ethical AI solutions and advancing cyber-security frameworks for the protection of digital identities.",
+    image: "/images/candidates/images.jpeg"
   }
 ];
 
@@ -244,9 +256,9 @@ export const CandidatesPage = () => {
                   <Link key={candidate.id} to={`/candidates/${candidate.id}`} className="group">
                     {/* GILDED IMAGE FRAME */}
                     <div className="relative aspect-[3/4] overflow-hidden bg-[#081612] border border-white/5 transition-all duration-1000 group-hover:border-[#d4af37]/40 group-hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)]">
-                      {/* Placeholder Image */}
+                      {/* Candidate Image */}
                       <img 
-                        src={`https://via.placeholder.com/400x600/0a1f1a/d4af37?text=${candidate.initials}`}
+                        src={candidate.image}
                         alt={candidate.name}
                         className="w-full h-full object-cover"
                       />
