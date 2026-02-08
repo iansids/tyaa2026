@@ -220,6 +220,24 @@ export const CandidatesPage = () => {
 
           {/* MAIN GRID */}
           <main className="w-full lg:flex-1">
+            {/* Mobile Filter Dropdown */}
+            <div className="lg:hidden mb-8 sm:mb-12">
+              <label className="text-[#d4af37] text-[11px] uppercase tracking-[5px] font-black block mb-3">
+                Filter by Institution
+              </label>
+              <select 
+                value={selectedCollege}
+                onChange={(e) => setSelectedCollege(e.target.value)}
+                className="w-full px-4 py-3 bg-[#081612] border border-[#d4af37]/30 text-white rounded-sm focus:outline-none focus:border-[#d4af37] transition-colors"
+              >
+                {colleges.map((college) => (
+                  <option key={college} value={college}>
+                    {college}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             {filteredContestants.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-4 sm:gap-x-6 md:gap-x-12 gap-y-12 sm:gap-y-16 md:gap-y-24">
                 {filteredContestants.map((candidate) => (
