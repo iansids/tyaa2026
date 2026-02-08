@@ -1,173 +1,159 @@
-import { useParams, Link } from 'react-router-dom'
-import { contestants } from '../data/contestants'
+import React, { useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { contestants } from '../data/contestants';
 
 export const CandidateDetailsPage = () => {
-  const { id } = useParams()
-  const candidate = contestants.find((c) => c.id === parseInt(id))
-  const goldText = "bg-gradient-to-b from-[#fbf5e7] via-[#d4af37] to-[#aa841e] bg-clip-text text-transparent"
-  const goldBtn = "bg-gradient-to-r from-[#d4af37] via-[#9a9e52] to-[#aa841e] hover:shadow-lg hover:shadow-[#d4af37]/50 transition-all duration-300"
+  const { id } = useParams();
+  const candidate = contestants.find((c) => c.id === parseInt(id));
 
-  if (!candidate) {
-    return (
-      <div className="w-full bg-[#0a1f1a] min-h-screen flex items-center justify-center">
-        <div className="text-center space-y-6">
-          <h1 className={`text-4xl font-serif font-bold ${goldText}`}>Candidate Not Found</h1>
-          <p className="text-stone-400">Sorry, we couldn't find this candidate.</p>
-          <Link to="/candidates" className={`${goldBtn} px-8 py-3 rounded font-bold text-[#0a1f1a] uppercase tracking-widest inline-block`}>
-            Back to Candidates
-          </Link>
-        </div>
-      </div>
-    )
-  }
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [id]);
 
-  const relatedCandidates = contestants
-    .filter((c) => c.college === candidate.college && c.id !== candidate.id)
-    .slice(0, 3)
+  const goldText = "bg-gradient-to-b from-[#fbf5e7] via-[#d4af37] to-[#aa841e] bg-clip-text text-transparent";
+  const goldBtn = "bg-gradient-to-r from-[#d4af37] via-[#fbf5e7] to-[#aa841e] hover:brightness-110 transition-all duration-500 shadow-[0_0_20px_rgba(212,175,55,0.2)]";
+
+  if (!candidate) return null;
 
   return (
-    <div className="w-full bg-[#0a1f1a] min-h-screen">
-      {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-6 md:py-8">
-        <Link to="/candidates" className="text-[#d4af37] hover:text-[#fbf5e7] transition-colors text-[12px] md:text-sm fill-current">
-          ← Back to Candidates
-        </Link>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 pb-20 md:pb-32">
-        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-          {/* Candidate Image & Info Card */}
-          <div className="md:col-span-1">
-            <div className="sticky top-28 space-y-6">
-              {/* Image Placeholder */}
-              <div className="relative rounded-lg overflow-hidden bg-gradient-to-br from-[#1a3d34] to-[#081612] border border-[#d4af37]/30">
-                <div className="aspect-square flex items-center justify-center relative">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a1f1a]/80"></div>
-                  <div className="relative z-10 text-center space-y-4">
-                    <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-[#d4af37] to-[#aa841e] flex items-center justify-center text-6xl font-serif font-bold text-[#0a1f1a]">
-                      {candidate.initials}
-                    </div>
-                    <div>
-                      <p className="text-[#d4af37] text-sm font-bold">
-                        {candidate.gender === 'male' ? '👨 Ambassador' : '👩 Ambassadress'}
-                      </p>
-                      <p className="text-stone-500 text-[11px] uppercase tracking-[2px] mt-2">Candidate</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Basic Info Card */}
-              <div className="bg-gradient-to-br from-[#d4af37]/10 to-[#3d7a6a]/10 border border-[#d4af37]/30 rounded-lg p-6 space-y-4">
-                <div>
-                  <p className="text-stone-600 text-[11px] uppercase tracking-[2px] mb-1">From</p>
-                  <p className="text-stone-200 font-semibold text-sm">{candidate.hometown}</p>
-                </div>
-                <div className="border-t border-[#d4af37]/10 pt-4">
-                  <p className="text-stone-600 text-[11px] uppercase tracking-[2px] mb-1">Institution</p>
-                  <p className={`font-serif font-bold text-lg ${goldText}`}>{candidate.college}</p>
-                </div>
-              </div>
-
-              {/* Vote Button */}
-              <Link
-                to="/voting"
-                className={`${goldBtn} w-full px-6 py-3 rounded font-bold text-[#0a1f1a] uppercase tracking-widest text-center text-[13px] md:text-sm`}
-              >
-                Vote for {candidate.name}
-              </Link>
-            </div>
-          </div>
-
-          {/* Candidate Details */}
-          <div className="md:col-span-2 space-y-10">
-            {/* Header */}
-            <div className="space-y-4">
-              <h1 className={`text-4xl md:text-5xl font-serif font-bold ${goldText}`}>
-                {candidate.name}
-              </h1>
-              <div className="flex flex-wrap gap-3">
-                <span className="px-4 py-2 bg-[#d4af37]/10 border border-[#d4af37]/50 rounded text-[12px] font-bold text-[#d4af37] uppercase tracking-wider">
-                  {candidate.college}
-                </span>
-                <span className="px-4 py-2 bg-[#3d7a6a]/20 border border-[#3d7a6a]/50 rounded text-[12px] font-bold text-[#9afff7] uppercase tracking-wider">
-                  {candidate.gender === 'male' ? 'Ambassador' : 'Ambassadress'}
-                </span>
-              </div>
-            </div>
-
-            {/* Biography */}
-            <div className="space-y-4 border-t border-[#d4af37]/10 pt-8">
-              <h2 className={`text-2xl md:text-3xl font-serif font-bold ${goldText}`}>
-                Biography
-              </h2>
-              <p className="text-stone-300 text-[14px] md:text-base leading-8">
-                {candidate.bio}
-              </p>
-            </div>
-
-            {/* Advocacy */}
-            <div className="space-y-4 border-t border-[#d4af37]/10 pt-8">
-              <h2 className={`text-2xl md:text-3xl font-serif font-bold ${goldText}`}>
-                Advocacy
-              </h2>
-              <div className="bg-gradient-to-br from-[#d4af37]/10 to-[#3d7a6a]/10 border border-[#d4af37]/20 rounded-lg p-6 md:p-8">
-                <p className="text-stone-300 text-[14px] md:text-base leading-8 italic">
-                  "{candidate.advocacy}"
-                </p>
-              </div>
-            </div>
-
-            {/* Call to Action */}
-            <div className="space-y-4 border-t border-[#d4af37]/10 pt-8">
-              <h3 className="text-lg font-semibold text-stone-300">
-                Share your support for {candidate.name}
-              </h3>
-              <Link
-                to="/voting"
-                className={`${goldBtn} w-full md:w-auto px-8 py-3 rounded font-bold text-[#0a1f1a] uppercase tracking-widest inline-block text-[13px]`}
-              >
-                Cast Your Vote
-              </Link>
-            </div>
-          </div>
+    <div className="w-full bg-[#0a1f1a] min-h-screen text-stone-200 selection:bg-[#d4af37]/30 overflow-x-hidden">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative min-h-[90vh] w-full overflow-hidden bg-[#0a1f1a] flex flex-col items-center justify-center">
+        
+        {/* BACK BUTTON */}
+        <div className="absolute top-28 md:top-36 left-6 md:left-12 z-20">
+          <Link 
+            to="/candidates" 
+            className="group flex items-center gap-3 px-5 py-2.5 bg-[#0a1f1a]/60 backdrop-blur-md border border-[#d4af37]/30 rounded-full text-[#d4af37] text-[10px] uppercase tracking-[4px] hover:bg-[#d4af37] hover:text-[#0a1f1a] transition-all duration-500 shadow-lg shadow-black/20"
+          >
+            <span className="text-lg group-hover:-translate-x-1 transition-transform font-light">←</span>
+            <span className="font-black">The Registry</span>
+          </Link>
         </div>
 
-        {/* Related Candidates */}
-        {relatedCandidates.length > 0 && (
-          <div className="mt-20 md:mt-32 pt-12 md:pt-20 border-t border-[#d4af37]/10 space-y-8">
-            <h2 className={`text-3xl md:text-4xl font-serif font-bold text-center ${goldText}`}>
-              Other Candidates from {candidate.college}
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {relatedCandidates.map((related) => (
-                <Link key={related.id} to={`/candidates/${related.id}`} className="group">
-                  <div className="relative rounded-lg overflow-hidden bg-gradient-to-br from-[#d4af37]/15 to-[#3d7a6a]/15 border border-[#d4af37]/30 hover:border-[#d4af37]/60 transition-all group-hover:shadow-lg group-hover:shadow-[#d4af37]/20">
-                    <div className="aspect-square flex items-center justify-center bg-gradient-to-br from-[#1a3d34] to-[#081612] relative">
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a1f1a]/80"></div>
-                      <div className="relative z-10 text-center">
-                        <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-[#d4af37] to-[#aa841e] flex items-center justify-center text-3xl font-serif font-bold text-[#0a1f1a] mb-2">
-                          {related.initials}
-                        </div>
-                        <p className="text-stone-400 text-[10px] uppercase tracking-[1px]">
-                          {related.gender === 'male' ? '👨' : '👩'}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="p-4 space-y-2">
-                      <h4 className={`font-serif font-bold text-sm group-hover:text-[#fbf5e7] transition-colors ${goldText}`}>
-                        {related.name}
-                      </h4>
-                      <p className="text-stone-500 text-[11px]">{related.hometown}</p>
-                    </div>
-                  </div>
+        {/* Background Layers */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={candidate.image} 
+            className="w-full h-full object-cover opacity-25 grayscale-[0.2] scale-110"
+            alt=""
+          />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(212,175,55,0.15)_0%,rgba(10,31,26,1)_80%)]"></div>
+          <div className="absolute inset-0 opacity-10 animate-pulse-slow bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 text-center px-4 pt-20 animate-fade-in">
+          <div className="space-y-3 mb-6">
+            <p className="text-[#d4af37] text-[11px] md:text-[13px] uppercase tracking-[12px] md:tracking-[18px] font-black opacity-80">
+              {candidate.gender === 'male' ? 'Ambassador' : 'Ambassadress'}
+            </p>
+            <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37]/50 to-transparent mx-auto"></div>
+          </div>
+
+          <h1 className={`text-[13vw] md:text-[8vw] lg:text-[7rem] font-serif font-black uppercase leading-[0.85] tracking-tighter drop-shadow-2xl ${goldText}`}>
+            {candidate.name.split(' ').map((word, i) => (
+              <span key={i} className="block md:inline md:mx-3">{word}</span>
+            ))}
+          </h1>
+          
+          <p className="mt-10 text-stone-400 text-[10px] md:text-sm uppercase tracking-[6px] font-light max-w-2xl mx-auto leading-relaxed">
+            Representing the <br/>
+            <span className="text-[#d4af37] font-bold tracking-[3px] mt-2 inline-block">
+              {candidate.college}
+            </span>
+          </p>
+        </div>
+
+        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-[#0a1f1a] via-[#0a1f1a]/40 to-transparent"></div>
+      </section>
+
+      {/* 2. MAIN DOSSIER CONTENT */}
+      <div className="max-w-7xl mx-auto px-6 pb-32">
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
+          
+          {/* Left Column: Portrait with Shine Effect */}
+          <div className="lg:col-span-5 space-y-12 lg:sticky lg:top-32">
+            
+            <div className="relative group overflow-hidden bg-[#081612] border border-white/10 shadow-2xl rounded-sm">
+               
+               {/* SNAPPY SOFT SHIMMER: Reduced duration to 800ms and tightened translation */}
+               <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden">
+                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4af37]/0 via-[#d4af37]/40 via-[#d4af37]/0 to-transparent blur-[50px] -translate-x-[120%] group-hover:translate-x-[120%] transition-transform duration-[800ms] ease-out"></div>
+               </div>
+
+               {/* Decorative Corners */}
+               <div className="absolute top-0 left-0 w-12 h-12 border-t border-l border-[#d4af37]/40 z-30 m-4 pointer-events-none"></div>
+               <div className="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-[#d4af37]/40 z-30 m-4 pointer-events-none"></div>
+               
+               <div className="relative aspect-[3/4] overflow-hidden">
+                 <img 
+                    src={candidate.image} 
+                    alt={candidate.name}
+                    className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                 />
+                 
+                 {/* Vignette Overlay */}
+                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a1f1a] via-transparent to-transparent opacity-80"></div>
+                 
+                 {/* Initials Accent */}
+                 <span className="absolute bottom-6 right-6 text-7xl font-serif font-black text-[#d4af37]/10 uppercase select-none tracking-tighter">
+                    {candidate.initials}
+                 </span>
+               </div>
+            </div>
+
+            {/* Voting Card */}
+            <div className="p-8 border border-white/5 bg-white/[0.02] backdrop-blur-sm space-y-8">
+                <div className="flex justify-between items-center border-b border-white/5 pb-4">
+                    <span className="text-[10px] uppercase tracking-[3px] text-stone-500 font-bold">Official Registry Entry</span>
+                    <span className="text-[10px] uppercase tracking-[3px] text-[#d4af37] font-black italic">✦ 0{candidate.id}</span>
+                </div>
+                
+                <Link
+                    to="/voting"
+                    className={`${goldBtn} flex items-center justify-center w-full py-5 rounded-sm text-[#0a1f1a] font-black uppercase tracking-[4px] text-[10px] transform hover:-translate-y-1 transition-all`}
+                >
+                    Cast Your Support
                 </Link>
-              ))}
             </div>
           </div>
-        )}
+
+          {/* Right Column: Content */}
+          <div className="lg:col-span-7 space-y-20 pt-4">
+            <section className="relative">
+                <h3 className="text-[#d4af37] text-[11px] uppercase tracking-[6px] font-black mb-8 flex items-center gap-4">
+                    The Narrative <div className="h-[1px] flex-1 bg-gradient-to-r from-[#d4af37]/40 to-transparent"></div>
+                </h3>
+                <p className="text-xl md:text-3xl font-serif text-stone-200 leading-[1.7] italic font-light">
+                    {candidate.bio}
+                </p>
+            </section>
+
+            <section className="relative p-10 md:p-16 border border-[#d4af37]/15 bg-gradient-to-br from-[#d4af37]/5 to-transparent rounded-sm group overflow-hidden">
+                {/* SNAPPY SHIMMER for Advocacy Box */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4af37]/0 via-[#d4af37]/20 via-[#d4af37]/0 to-transparent blur-[60px] -translate-x-[120%] group-hover:translate-x-[120%] transition-transform duration-[1000ms] ease-out"></div>
+                </div>
+
+                <span className="absolute -top-8 -left-4 text-[12rem] font-serif font-black text-[#d4af37]/5 leading-none select-none italic pointer-events-none">
+                    "
+                </span>
+                <h3 className="text-[#d4af37] text-[11px] uppercase tracking-[6px] font-black mb-8 relative z-10">The Advocacy</h3>
+                <p className="relative z-10 text-lg md:text-2xl text-stone-300 leading-relaxed tracking-wide font-serif italic">
+                    {candidate.advocacy}
+                </p>
+            </section>
+          </div>
+        </div>
       </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes pulse-slow { 0%, 100% { opacity: 0.05; } 50% { opacity: 0.15; } }
+        .animate-pulse-slow { animation: pulse-slow 10s ease-in-out infinite; }
+        .animate-fade-in { animation: fade-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+      `}} />
     </div>
-  )
-}
+  );
+};
