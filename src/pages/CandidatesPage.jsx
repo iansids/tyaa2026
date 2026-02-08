@@ -244,8 +244,14 @@ export const CandidatesPage = () => {
                   <Link key={candidate.id} to={`/candidates/${candidate.id}`} className="group">
                     {/* GILDED IMAGE FRAME */}
                     <div className="relative aspect-[3/4] overflow-hidden bg-[#081612] border border-white/5 transition-all duration-1000 group-hover:border-[#d4af37]/40 group-hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)]">
+                      {/* Placeholder Image */}
+                      <img 
+                        src={`https://via.placeholder.com/400x600/0a1f1a/d4af37?text=${candidate.initials}`}
+                        alt={candidate.name}
+                        className="w-full h-full object-cover"
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0a1f1a] via-transparent to-transparent z-10"></div>
-                      <div className="absolute inset-0 flex items-center justify-center transition-transform duration-[2000ms] group-hover:scale-125">
+                      <div className="absolute inset-0 flex items-center justify-center transition-transform duration-[2000ms] group-hover:scale-125 opacity-0">
                         <span className="text-[12rem] font-serif font-black opacity-[0.03] group-hover:opacity-[0.08] transition-opacity select-none">
                           {candidate.initials}
                         </span>
