@@ -305,7 +305,7 @@ export const CandidatesPage = () => {
           to { transform: translateX(-50%); }
         }
         .animate-marquee-seamless {
-          animation: marquee-seamless 120s linear infinite;
+          animation: marquee-seamless 60s linear infinite;
         }
         /* Prevents flicker on some browsers */
         .w-max {
