@@ -173,55 +173,55 @@ export const CandidatesPage = () => {
     </section>
 
       {/* SECTION 2: THE REGISTRY GALLERY */}
-      <div className="max-w-[1600px] mx-auto px-6 py-32">
-        <div className="flex flex-col lg:flex-row gap-20 items-start">
+      <div className="max-w-[1600px] mx-auto px-3 sm:px-4 md:px-6 py-16 sm:py-24 md:py-32">
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 md:gap-20 items-start">
           
         {/* SIDEBAR */}
-        <aside className="lg:w-96 w-full lg:sticky lg:top-32 space-y-12">
-  <div className="space-y-8">
-    {/* Header Section: Left Aligned */}
-    <div className="flex items-center gap-4 px-4">
-      <h3 className="text-[#d4af37] text-[11px] uppercase tracking-[5px] font-black whitespace-nowrap">
-        Institutions
-      </h3>
-      <div className="h-[1px] flex-1 bg-gradient-to-r from-[#d4af37]/40 to-transparent"></div>
-    </div>
-    
-    <nav className="flex flex-col">
-      {colleges.map((college) => (
-        <button
-          key={college}
-          onClick={() => setSelectedCollege(college)}
-          className={`group relative flex items-start gap-4 py-5 px-6 transition-all duration-500 border-l-2 ${
-            selectedCollege === college
-              ? 'border-[#d4af37] bg-[#d4af37]/5 text-[#d4af37]'
-              : 'border-white/5 text-stone-500 hover:text-stone-300 hover:border-stone-700'
-          }`}
-        >
-          {/* Active Indicator: Left Aligned */}
-          <span className={`mt-0.5 text-[10px] transition-all duration-500 flex-shrink-0 ${
-            selectedCollege === college ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
-          }`}>
-            ✦
-          </span>
+        <aside className="lg:w-96 w-full lg:sticky lg:top-32 space-y-6 sm:space-y-8 md:space-y-12">
+            <div className="space-y-8">
+                {/* Header Section: Left Aligned */}
+                <div className="flex items-center gap-3 sm:gap-4 px-2 sm:px-3 md:px-4">
+                <h3 className="text-[#d4af37] text-[11px] uppercase tracking-[5px] font-black whitespace-nowrap">
+                    Institutions
+                </h3>
+                <div className="h-[1px] flex-1 bg-gradient-to-r from-[#d4af37]/40 to-transparent"></div>
+                </div>
+                
+                <nav className="flex flex-col">
+                {colleges.map((college) => (
+                    <button
+                    key={college}
+                    onClick={() => setSelectedCollege(college)}
+                    className={`group relative flex items-start gap-3 sm:gap-4 py-3 sm:py-4 md:py-5 px-3 sm:px-4 md:px-6 transition-all duration-500 border-l-2 ${
+                        selectedCollege === college
+                        ? 'border-[#d4af37] bg-[#d4af37]/5 text-[#d4af37]'
+                        : 'border-white/5 text-stone-500 hover:text-stone-300 hover:border-stone-700'
+                    }`}
+                    >
+                    {/* Active Indicator: Left Aligned */}
+                    <span className={`mt-0.5 text-[10px] transition-all duration-500 flex-shrink-0 ${
+                        selectedCollege === college ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                    }`}>
+                        ✦
+                    </span>
 
-          {/* College Name: Left Aligned and Wrapped */}
-          <span className={`
-            text-[11px] uppercase tracking-[2px] font-bold text-left leading-relaxed transition-transform duration-500
-            ${selectedCollege === college ? 'translate-x-0' : '-translate-x-2'}
-          `}>
-            {college}
-          </span>
-        </button>
-      ))}
-    </nav>
-  </div>
-</aside>
+                    {/* College Name: Left Aligned and Wrapped */}
+                    <span className={`
+                        text-[11px] uppercase tracking-[2px] font-bold text-left leading-relaxed transition-transform duration-500
+                        ${selectedCollege === college ? 'translate-x-0' : '-translate-x-2'}
+                    `}>
+                        {college}
+                    </span>
+                    </button>
+                ))}
+                </nav>
+            </div>
+            </aside>
 
           {/* MAIN GRID */}
           <main className="flex-1">
             {filteredContestants.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-12 gap-y-24">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-4 sm:gap-x-6 md:gap-x-12 gap-y-12 sm:gap-y-16 md:gap-y-24">
                 {filteredContestants.map((candidate) => (
                   <Link key={candidate.id} to={`/candidates/${candidate.id}`} className="group">
                     {/* GILDED IMAGE FRAME */}
@@ -238,11 +238,11 @@ export const CandidatesPage = () => {
                       <div className="absolute bottom-6 left-6 w-12 h-12 border-b border-l border-[#d4af37]/0 group-hover:border-[#d4af37]/40 transition-all duration-700"></div>
 
                       {/* Overlay Info */}
-                      <div className="absolute inset-x-0 bottom-0 p-10 z-20 transform transition-transform duration-700 group-hover:-translate-y-2">
+                      <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7 md:p-10 z-20 transform transition-transform duration-700 group-hover:-translate-y-2">
                         <p className="text-[#d4af37] text-[10px] uppercase tracking-[5px] font-black mb-4">
                           {candidate.gender === 'male' ? 'Ambassador' : 'Ambassadress'}
                         </p>
-                        <h3 className="text-3xl font-serif font-bold text-white mb-2 tracking-tight group-hover:text-[#fbf5e7] transition-colors">
+                        <h3 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-white mb-2 tracking-tight group-hover:text-[#fbf5e7] transition-colors">
                           {candidate.name}
                         </h3>
                         <p className="text-stone-500 text-[11px] uppercase tracking-[3px] mb-6">{candidate.college}</p>
