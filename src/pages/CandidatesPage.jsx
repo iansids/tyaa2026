@@ -161,23 +161,19 @@ export const CandidatesPage = () => {
         </div>
     </div>
 
-    {/* THE SEAMLESS MARQUEE - Slightly lowered opacity to prioritize text legibility */}
-    <div className="absolute inset-0 z-10 opacity-[0.15] flex items-center pointer-events-none">
+    {/* THE SEAMLESS MARQUEE - Candidate Images */}
+    <div className="absolute inset-0 z-10 opacity-20 flex items-center pointer-events-none">
         <div className="flex w-max animate-marquee-seamless">
         {marqueeItems.map((candidate, idx) => (
             <div 
             key={idx} 
             className="relative w-[280px] md:w-[450px] aspect-[3/4] mx-4 md:mx-8 overflow-hidden border border-white/5 rounded-sm bg-[#0a1f1a] flex-shrink-0"
             >
-            <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-[10rem] md:text-[12rem] font-serif font-black text-[#d4af37]/10 uppercase">
-                {candidate.initials}
-                </span>
-            </div>
-            <div className="absolute bottom-10 left-10 text-left">
-                <p className="text-[#d4af37] text-[10px] uppercase tracking-widest font-bold mb-1 opacity-60">Representative</p>
-                <p className="text-white text-xl md:text-2xl font-serif italic">{candidate.college}</p>
-            </div>
+            <img 
+              src={candidate.image}
+              alt={candidate.name}
+              className="w-full h-full object-cover"
+            />
             </div>
         ))}
         </div>
@@ -274,17 +270,17 @@ export const CandidatesPage = () => {
                       <div className="absolute bottom-6 left-6 w-12 h-12 border-b border-l border-[#d4af37]/0 group-hover:border-[#d4af37]/40 transition-all duration-700"></div>
 
                       {/* Overlay Info */}
-                      <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7 md:p-10 z-20 transform transition-transform duration-700 group-hover:-translate-y-2">
-                        <p className="text-[#d4af37] text-[10px] uppercase tracking-[5px] font-black mb-4">
+                      <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7 md:p-10 z-20 transform transition-transform duration-700 group-hover:-translate-y-2 bg-gradient-to-t from-[#0a1f1a] via-[#0a1f1a]/95 to-transparent">
+                        <p className="text-[#d4af37] text-[10px] uppercase tracking-[5px] font-black mb-2">
                           {candidate.gender === 'male' ? 'Ambassador' : 'Ambassadress'}
                         </p>
-                        <h3 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-white mb-2 tracking-tight group-hover:text-[#fbf5e7] transition-colors">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-serif font-bold text-white mb-1 tracking-tight group-hover:text-[#fbf5e7] transition-colors leading-tight">
                           {candidate.name}
                         </h3>
-                        <p className="text-stone-500 text-[11px] uppercase tracking-[3px] mb-6">{candidate.college}</p>
+                        <p className="text-stone-300 text-[9px] sm:text-[10px] uppercase tracking-[2px] mb-3">{candidate.college}</p>
                         
                         <div className="max-h-0 opacity-0 group-hover:max-h-32 group-hover:opacity-100 transition-all duration-1000 ease-out overflow-hidden">
-                          <p className="text-stone-400 text-xs italic leading-relaxed line-clamp-3">{candidate.bio}</p>
+                          <p className="text-stone-300 text-[9px] sm:text-xs italic leading-relaxed line-clamp-2">{candidate.bio}</p>
                         </div>
                       </div>
                     </div>
