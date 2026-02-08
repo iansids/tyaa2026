@@ -8,7 +8,7 @@ export const LandingPage = () => {
   return (
     <div className="w-full bg-[#0a1f1a] selection:bg-[#d4af37] selection:text-white">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 pt-24 md:pt-0 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 overflow-hidden pt-0">
         {/* Ambient Royal Glow */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#d4af37]/5 rounded-full blur-[120px] animate-pulse"></div>
