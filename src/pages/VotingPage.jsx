@@ -63,12 +63,10 @@ export const VotingPage = () => {
     return found ? found.name : "No Selection";
   };
 
-  // NEW: Handle Requesting Code with Timer
   const handleRequestCode = () => {
     if (isEmailValid) {
       setIsOtpSent(true);
-      setTimer(30); // Starts countdown immediately upon request
-      // Logic for backend API call would go here
+      setTimer(30);
     }
   };
 
@@ -80,10 +78,9 @@ export const VotingPage = () => {
     }
   };
 
-  // --- Success State (Digital Receipt) ---
+  // --- Success State ---
   if (hasVoted && submitted) {
     const timestamp = new Date().toLocaleString();
-
     return (
       <div className="w-full bg-[#0a1f1a] min-h-screen flex items-center justify-center px-4 animate-fade-in">
         <div className="w-full max-w-lg border border-[#d4af37]/30 bg-[#081612] p-8 md:p-12 space-y-8 text-center shadow-2xl">
@@ -93,12 +90,10 @@ export const VotingPage = () => {
             </div>
           </div>
           <h1 className={`text-4xl font-serif font-black uppercase ${goldText}`}>Ballot Confirmed</h1>
-          
           <div className="space-y-4 border-y border-white/5 py-6 text-left">
             <div className="flex justify-between"><span className="text-[10px] text-stone-500 uppercase">Ambassador</span><span className="text-sm italic">{getSelectedName(ambassadorVote, ambassadors)}</span></div>
             <div className="flex justify-between"><span className="text-[10px] text-stone-500 uppercase">Ambassadress</span><span className="text-sm italic">{getSelectedName(ambassadressVote, ambassadresses)}</span></div>
           </div>
-
           <Link to="/candidates" className={`${goldBtn} block w-full py-4 text-[#0a1f1a] font-black uppercase tracking-[3px] text-xs`}>Return to Home</Link>
           <p className="text-[9px] text-stone-600 uppercase tracking-widest">{timestamp}</p>
         </div>
@@ -106,22 +101,38 @@ export const VotingPage = () => {
     );
   }
 
-  // --- Reusable Candidate Card ---
+  // --- RESPONSIVE CARD COMPONENT ---
   const CandidateCard = ({ candidate, selected, onSelect }) => (
     <button
       onClick={() => onSelect(candidate.id)}
       className={`relative group text-left transition-all duration-500 w-full rounded-sm overflow-hidden border ${
         selected ? 'border-[#d4af37] ring-1 ring-[#d4af37]' : 'border-white/10 hover:border-[#d4af37]/50'
-      }`}
+      } flex md:block p-4 md:p-0 items-center gap-4`}
     >
-      <div className="relative aspect-[3/4] overflow-hidden bg-[#081612]">
-        <div className="absolute inset-0 bg-[#d4af37]/0 group-hover:bg-[#d4af37]/5 transition-colors duration-500 z-10 pointer-events-none"></div>
-        <img src={candidate.image} className={`w-full h-full object-cover transition-all duration-700 ${selected ? 'grayscale-0' : 'grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100'}`} alt={candidate.name}/>
-        <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#0a1f1a] to-transparent z-20">
-          <p className="text-[9px] uppercase tracking-[3px] text-[#d4af37] font-bold mb-1">{candidate.college}</p>
-          <h3 className="text-xl font-serif font-black uppercase tracking-tight text-white">{candidate.name}</h3>
-        </div>
-        {selected && <div className="absolute top-4 right-4 w-7 h-7 bg-[#d4af37] text-[#0a1f1a] rounded-full flex items-center justify-center z-30 animate-scale-in"><span className="text-xs font-black">✓</span></div>}
+      {/* Mobile: Circle Image | Desktop: Full Aspect Image */}
+      <div className="relative h-12 w-12 md:h-auto md:w-full md:aspect-[3/4] flex-shrink-0 overflow-hidden bg-[#081612] rounded-full md:rounded-none border border-[#d4af37]/20 md:border-none">
+        <img 
+          src={candidate.image} 
+          className={`w-full h-full object-cover transition-all duration-700 ${selected ? 'grayscale-0 scale-110' : 'grayscale opacity-50 md:opacity-40 group-hover:opacity-100 group-hover:grayscale-0'}`} 
+          alt={candidate.name}
+        />
+      </div>
+
+      {/* Content */}
+      <div className="flex-grow md:absolute md:inset-x-0 md:bottom-0 md:p-6 md:bg-gradient-to-t md:from-[#0a1f1a] md:to-transparent z-20">
+        <p className="text-[8px] md:text-[9px] uppercase tracking-[2px] md:tracking-[3px] text-[#d4af37] font-bold mb-0.5 md:mb-1">
+          {candidate.college}
+        </p>
+        <h3 className="text-sm md:text-xl font-serif font-black uppercase tracking-tight text-white leading-tight">
+          {candidate.name}
+        </h3>
+      </div>
+
+      {/* Checkmark Indicator */}
+      <div className={`md:absolute md:top-4 md:right-4 w-6 h-6 md:w-7 md:h-7 rounded-full flex items-center justify-center z-30 transition-all ${
+        selected ? 'bg-[#d4af37] text-[#0a1f1a] scale-100' : 'bg-white/5 text-transparent scale-75 border border-white/10'
+      }`}>
+        <span className="text-[10px] font-black">✓</span>
       </div>
     </button>
   );
@@ -130,24 +141,25 @@ export const VotingPage = () => {
     <div className="w-full bg-[#0a1f1a] min-h-screen text-stone-200">
       
       {/* HEADER SECTION */}
-      <section className="relative pt-32 pb-16 px-6 text-center">
+      <section className="relative pt-24 md:pt-32 pb-12 md:pb-16 px-6 text-center">
         <div className="max-w-4xl mx-auto space-y-4">
-          <h3 className="text-[#d4af37] text-[10px] uppercase tracking-[15px] font-black opacity-60">Step 0{step} / 03</h3>
-          <h1 className={`text-5xl md:text-7xl font-serif font-black uppercase tracking-tighter ${goldText}`}>
-            {step === 1 ? 'Select Ambassador' : step === 2 ? 'Select Ambassadress' : 'Identity Check'}
+          <h3 className="text-[#d4af37] text-[10px] uppercase tracking-[10px] md:tracking-[15px] font-black opacity-60">Step 0{step} / 03</h3>
+          <h1 className={`text-4xl md:text-7xl font-serif font-black uppercase tracking-tighter ${goldText}`}>
+            {step === 1 ? 'Ambassador' : step === 2 ? 'Ambassadress' : 'Verification'}
           </h1>
           <div className="flex justify-center gap-2 mt-6">
             {[1, 2, 3].map(i => (
-              <div key={i} className={`h-[2px] w-8 transition-all duration-500 ${step >= i ? 'bg-[#d4af37]' : 'bg-white/10'}`}></div>
+              <div key={i} className={`h-[2px] w-6 md:w-8 transition-all duration-500 ${step >= i ? 'bg-[#d4af37]' : 'bg-white/10'}`}></div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* GALLERY STEPS (1 & 2) */}
+      {/* SELECTION PHASES */}
       {step < 3 && (
-        <div className="max-w-7xl mx-auto px-6 pb-20 animate-fade-in space-y-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-6 pb-20 animate-fade-in space-y-8 md:space-y-12">
+          {/* Layout: Grid 1 Col on Mobile (List), Grid 3 Col on Desktop (Gallery) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
             {(step === 1 ? ambassadors : ambassadresses).map((c) => (
               <CandidateCard 
                 key={c.id} 
@@ -159,10 +171,10 @@ export const VotingPage = () => {
           </div>
 
           {/* ABSTAIN OPTION */}
-          <div className="flex justify-center">
+          <div className="flex justify-center pt-4">
             <button 
               onClick={() => handleSelect('none', step === 1 ? 'ambassador' : 'ambassadress')}
-              className="flex items-center gap-4 group py-4 px-8 border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all"
+              className="flex items-center gap-4 group py-4 px-8 border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all w-full md:w-auto justify-center"
             >
               <div className={`w-5 h-5 border flex items-center justify-center transition-all ${
                 (step === 1 ? ambassadorVote : ambassadressVote) === 'none' ? 'border-[#d4af37] bg-[#d4af37]' : 'border-white/30'
@@ -180,25 +192,20 @@ export const VotingPage = () => {
       {/* VERIFICATION STEP (3) */}
       {step === 3 && (
         <div className="max-w-2xl mx-auto px-6 pb-20 animate-fade-in space-y-12">
-          {/* Review Panel */}
           <div className="grid grid-cols-2 gap-8 border-b border-white/10 pb-10">
-             <div className="space-y-2">
-                <span className="text-[10px] uppercase tracking-widest text-stone-600">Ambassador</span>
-                <p className="text-white font-serif italic text-lg">{getSelectedName(ambassadorVote, ambassadors)}</p>
+             <div className="space-y-2 text-center md:text-left">
+                <span className="text-[10px] uppercase tracking-widest text-stone-600 font-bold">Ambassador</span>
+                <p className="text-white font-serif italic text-base md:text-lg">{getSelectedName(ambassadorVote, ambassadors)}</p>
              </div>
-             <div className="space-y-2">
-                <span className="text-[10px] uppercase tracking-widest text-stone-600">Ambassadress</span>
-                <p className="text-white font-serif italic text-lg">{getSelectedName(ambassadressVote, ambassadresses)}</p>
+             <div className="space-y-2 text-center md:text-left">
+                <span className="text-[10px] uppercase tracking-widest text-stone-600 font-bold">Ambassadress</span>
+                <p className="text-white font-serif italic text-base md:text-lg">{getSelectedName(ambassadressVote, ambassadresses)}</p>
              </div>
           </div>
 
-          {/* Form Panel */}
-          <div className="bg-white/[0.01] border border-white/5 p-8 md:p-12 space-y-8">
+          <div className="bg-white/[0.01] border border-white/5 p-6 md:p-12 space-y-8">
             <div className="space-y-4">
-              <div className="flex justify-between">
-                <label className="text-[10px] uppercase tracking-[3px] text-stone-500 font-bold">UST Email</label>
-                {email && <span className={`text-[9px] uppercase font-bold ${isEmailValid ? 'text-green-500' : 'text-[#d4af37]'}`}>{getEmailError() || "Ready"}</span>}
-              </div>
+              <label className="text-[10px] uppercase tracking-[3px] text-stone-500 font-bold block">UST Email Address</label>
               <input 
                 type="email" 
                 value={email}
@@ -219,8 +226,8 @@ export const VotingPage = () => {
             </div>
 
             {isOtpSent && (
-              <div className="space-y-6 pt-6 animate-fade-in">
-                <label className="text-[10px] uppercase tracking-[3px] text-stone-500 font-bold block text-center">6-Digit Verification Code</label>
+              <div className="space-y-6 pt-6 animate-fade-in text-center">
+                <label className="text-[10px] uppercase tracking-[3px] text-stone-500 font-bold block">6-Digit Code</label>
                 <input 
                   type="text" 
                   maxLength={6}
@@ -232,7 +239,7 @@ export const VotingPage = () => {
                 <button 
                   onClick={handleRequestCode}
                   disabled={timer > 0}
-                  className="w-full text-[10px] uppercase tracking-widest text-stone-500 hover:text-white disabled:opacity-30 transition-all underline underline-offset-8"
+                  className="text-[10px] uppercase tracking-widest text-stone-500 hover:text-white disabled:opacity-30 transition-all underline underline-offset-8"
                 >
                   {timer > 0 ? `Resend Available in ${timer}s` : "Resend Code"}
                 </button>
@@ -242,8 +249,8 @@ export const VotingPage = () => {
         </div>
       )}
 
-      {/* FIXED NAVIGATION FOOTER */}
-      <div className="max-w-7xl mx-auto px-6 py-12 border-t border-white/10 flex items-center justify-between mb-20">
+      {/* FOOTER NAV */}
+      <div className="max-w-7xl mx-auto px-6 py-12 border-t border-white/10 flex items-center justify-between mb-20 bg-[#0a1f1a]/80 backdrop-blur-md sticky bottom-0">
         <button 
           onClick={() => { if(step === 3) setIsOtpSent(false); setStep(s => Math.max(1, s - 1)); }} 
           className={`text-stone-500 hover:text-white text-[10px] uppercase tracking-[4px] font-black transition-all ${step === 1 ? 'invisible' : ''}`}
@@ -253,17 +260,15 @@ export const VotingPage = () => {
         <button
           onClick={step < 3 ? () => setStep(s => s + 1) : handleFinalSubmit}
           disabled={step === 1 ? !ambassadorVote : step === 2 ? !ambassadressVote : otp.length !== 6}
-          className={`${goldBtn} px-14 py-5 rounded-sm text-[#0a1f1a] font-black uppercase tracking-[3px] text-xs disabled:opacity-20 transition-all`}
+          className={`${goldBtn} px-8 md:px-14 py-4 md:py-5 rounded-sm text-[#0a1f1a] font-black uppercase tracking-[3px] text-xs disabled:opacity-20 transition-all`}
         >
-          {step < 3 ? 'Continue' : 'Confirm Ballot'}
+          {step < 3 ? 'Continue' : 'Finalize Vote'}
         </button>
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes scale-in { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .animate-fade-in { animation: fade-in 0.8s ease-out forwards; }
-        .animate-scale-in { animation: scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
       `}} />
     </div>
   );

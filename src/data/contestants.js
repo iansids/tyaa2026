@@ -1,128 +1,110 @@
 export const contestants = [
-  // Faculty of Arts and Letters
-  {
-    id: 1,
-    name: "Maria Santos",
-    college: "Faculty of Arts and Letters",
-    gender: "female",
-    hometown: "Manila",
-    initials: "MS",
-    bio: "A passionate advocate for literary arts and cultural preservation.",
-    advocacy: "Promoting indigenous literature and cultural storytelling in the modern world",
+  { 
+    id: 1, 
+    name: "Alexander Wright", 
+    college: "Faculty of Engineering", 
+    initials: "AW", 
+    gender: "male", 
+    bio: "A visionary leader committed to sustainable innovation and the integration of green technology in urban development.",
+    image: "/images/candidates/alexkaplanphoto_a_male_business_headshots_shot_outdoors_in_offi_9a228509-0f9a-438c-aeab-ab8dce7f414b.webp"
   },
-  {
-    id: 2,
-    name: "Julian Reyes",
-    college: "Faculty of Arts and Letters",
-    gender: "male",
-    hometown: "Bulacan",
-    initials: "JR",
-    bio: "A dedicated educator focused on youth mentorship and academic excellence.",
-    advocacy: "Bridging the gap between traditional education and modern learning approaches",
+  { 
+    id: 2, 
+    name: "Sophia Villareal", 
+    college: "Faculty of Medicine and Surgery", 
+    initials: "SV", 
+    gender: "female", 
+    bio: "Advocating for accessible healthcare and empathetic leadership through community-based medical missions.",
+    image: "/images/candidates/business-headshot-example-2.webp"
   },
-  // College of Science
-  {
-    id: 3,
-    name: "Angela Cruz",
-    college: "College of Science",
-    gender: "female",
-    hometown: "Cebu City",
-    initials: "AC",
-    bio: "An aspiring environmental scientist dedicated to sustainability.",
-    advocacy: "Advancing sustainable practices and environmental conservation initiatives",
+  { 
+    id: 3, 
+    name: "Julian De Leon", 
+    college: "College of Architecture", 
+    initials: "JD", 
+    gender: "male", 
+    bio: "Designing inclusive spaces that foster community growth and preserve cultural heritage in the modern era.",
+    image: "/images/candidates/images.jpeg"
   },
-  {
-    id: 4,
-    name: "Marcus Villanueva",
-    college: "College of Science",
-    gender: "male",
-    hometown: "Pampanga",
-    initials: "MV",
-    bio: "A biotech enthusiast working on innovative scientific solutions.",
-    advocacy: "Making cutting-edge biotechnology accessible to underserved communities",
+  { 
+    id: 4, 
+    name: "Isabella Cruz", 
+    college: "Faculty of Arts & Letters", 
+    initials: "IC", 
+    gender: "female", 
+    bio: "Championing the power of literature and communication to bridge social divides and amplify marginalized voices.",
+    image: "/images/candidates/alexkaplanphoto_a_male_business_headshots_shot_outdoors_in_offi_9a228509-0f9a-438c-aeab-ab8dce7f414b.webp"
   },
-  // Faculty of Engineering
-  {
-    id: 5,
-    name: "Sofia Reyes",
-    college: "Faculty of Engineering",
-    gender: "female",
-    hometown: "Davao City",
-    initials: "SR",
-    bio: "A talented engineer designing smart infrastructure solutions.",
-    advocacy: "Creating sustainable engineering solutions for climate resilience",
+  { 
+    id: 5, 
+    name: "Marcus Chen", 
+    college: "College of Science", 
+    initials: "MC", 
+    gender: "male", 
+    bio: "Exploring the frontiers of biotechnology to solve food security challenges and advance molecular research.",
+    image: "/images/candidates/business-headshot-example-2.webp"
   },
-  {
-    id: 6,
-    name: "Nathaniel Chen",
-    college: "Faculty of Engineering",
-    gender: "male",
-    hometown: "Batangas",
-    initials: "NC",
-    bio: "An innovator focused on renewable energy and green technology.",
-    advocacy: "Promoting green energy initiatives in developing regions",
+  { 
+    id: 6, 
+    name: "Elena Rodriguez", 
+    college: "College of Education", 
+    initials: "ER", 
+    gender: "female", 
+    bio: "Transforming the pedagogical landscape through digital literacy and inclusive classroom management strategies.",
+    image: "/images/candidates/images.jpeg"
   },
-  // College of Commerce
-  {
-    id: 7,
-    name: "Isabella Garcia",
-    college: "College of Commerce",
-    gender: "female",
-    hometown: "Quezon City",
-    initials: "IG",
-    bio: "A community volunteer focused on economic empowerment.",
-    advocacy: "Empowering small businesses and social entrepreneurship",
+  { 
+    id: 7, 
+    name: "Nathaniel Thorne", 
+    college: "College of Commerce and Business Administration", 
+    initials: "NT", 
+    gender: "male", 
+    bio: "Redefining ethical business practices and promoting social entrepreneurship as a catalyst for national progress.",
+    image: "/images/candidates/alexkaplanphoto_a_male_business_headshots_shot_outdoors_in_offi_9a228509-0f9a-438c-aeab-ab8dce7f414b.webp"
   },
-  {
-    id: 8,
-    name: "Ricardo De Leon",
-    college: "College of Commerce",
-    gender: "male",
-    hometown: "Makati",
-    initials: "RL",
-    bio: "A finance advocate promoting financial literacy for all.",
-    advocacy: "Democratizing financial literacy and economic education",
+  { 
+    id: 8, 
+    name: "Clara Beaumont", 
+    college: "Conservatory of Music", 
+    initials: "CB", 
+    gender: "female", 
+    bio: "Bridging classical traditions with contemporary soul to create music that heals and inspires the modern spirit.",
+    image: "/images/candidates/business-headshot-example-2.webp"
   },
-  // AMV College of Accountancy
-  {
-    id: 9,
-    name: "Camille Torres",
-    college: "AMV College of Accountancy",
-    gender: "female",
-    hometown: "Iloilo City",
-    initials: "CT",
-    bio: "An athlete and advocate for women in business and sports.",
-    advocacy: "Advancing women entrepreneurship and financial independence",
+  { 
+    id: 9, 
+    name: "Dominic Varga", 
+    college: "College of Nursing", 
+    initials: "DV", 
+    gender: "male", 
+    bio: "Dedicated to the art of caregiving and elevating the standards of patient advocacy in emergency medicine.",
+    image: "/images/candidates/images.jpeg"
   },
-  {
-    id: 10,
-    name: "Anthony Sy",
-    college: "AMV College of Accountancy",
-    gender: "male",
-    hometown: "Cavite",
-    initials: "AS",
-    bio: "A financial transparency advocate for social accountability.",
-    advocacy: "Promoting transparent governance and fiscal responsibility",
+  { 
+    id: 10, 
+    name: "Genevieve Shao", 
+    college: "College of Fine Arts and Design", 
+    initials: "GS", 
+    gender: "female", 
+    bio: "Utilizing visual storytelling and multi-media installations to provoke dialogue on environmental conservation.",
+    image: "/images/candidates/alexkaplanphoto_a_male_business_headshots_shot_outdoors_in_offi_9a228509-0f9a-438c-aeab-ab8dce7f414b.webp"
   },
-  // College of Architecture
-  {
-    id: 11,
-    name: "Nicole Fernandez",
-    college: "College of Architecture",
-    gender: "female",
-    hometown: "Baguio City",
-    initials: "NF",
-    bio: "A cultural arts enthusiast preserving indigenous traditions.",
-    advocacy: "Preserving cultural heritage through sustainable architecture and design",
+  { 
+    id: 11, 
+    name: "Sebastian Valerius", 
+    college: "Faculty of Civil Law", 
+    initials: "SV", 
+    gender: "male", 
+    bio: "An aspiring jurist focused on human rights defense and the modernization of judicial transparency.",
+    image: "/images/candidates/business-headshot-example-2.webp"
   },
-  {
-    id: 12,
-    name: "Gabriel Pangilinan",
-    college: "College of Architecture",
-    gender: "male",
-    hometown: "Rizal",
-    initials: "GP",
-    bio: "An architect designing community-centered public spaces.",
-    advocacy: "Creating inclusive public spaces for marginalized communities",
-  },
-]
+  { 
+    id: 12, 
+    name: "Amara Okafor", 
+    college: "College of Information and Computing Sciences", 
+    initials: "AO", 
+    gender: "female", 
+    bio: "Developing ethical AI solutions and advancing cyber-security frameworks for the protection of digital identities.",
+    image: "/images/candidates/images.jpeg"
+  }
+];
