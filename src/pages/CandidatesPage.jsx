@@ -177,7 +177,7 @@ export const CandidatesPage = () => {
         <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 md:gap-20 items-start">
           
         {/* SIDEBAR */}
-        <aside className="lg:w-96 w-full lg:sticky lg:top-32 space-y-6 sm:space-y-8 md:space-y-12">
+        <aside className="hidden lg:block lg:w-96 lg:sticky lg:top-32 space-y-6 sm:space-y-8 md:space-y-12">
             <div className="space-y-8">
                 {/* Header Section: Left Aligned */}
                 <div className="flex items-center gap-3 sm:gap-4 px-2 sm:px-3 md:px-4">
