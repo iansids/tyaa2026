@@ -7,8 +7,68 @@ export const LandingPage = () => {
 
   return (
     <div className="w-full bg-[#0a1f1a] selection:bg-[#d4af37] selection:text-white">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 overflow-hidden pt-0">
+      {/* Hero Section - Mobile */}
+      <section className="md:hidden relative h-screen flex flex-col items-center justify-center px-4 overflow-hidden bg-[#0a1f1a]">
+        {/* Ambient Royal Glow */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-[#d4af37]/5 rounded-full blur-[80px] animate-pulse"></div>
+          <div className="absolute bottom-[-20%] right-[-20%] w-[60%] h-[60%] bg-[#2d5a4d]/10 rounded-full blur-[80px]"></div>
+        </div>
+
+        <div className="relative z-10 text-center space-y-4 flex flex-col items-center justify-center w-full">
+          {/* Badge */}
+          <div className="inline-block px-3 py-1.5 border border-[#d4af37]/30 rounded-full backdrop-blur-sm">
+            <p className="text-[7px] uppercase tracking-[2px] text-[#d4af37] font-bold">
+              SOCC Presents
+            </p>
+          </div>
+
+          {/* Headline */}
+          <div className="space-y-2">
+            <span className={`text-2xl font-serif font-black leading-tight block ${goldText}`}>
+              Thomasian Youth
+            </span>
+            
+            <div className="flex flex-col items-center gap-1">
+              <span className="text-xs font-serif font-light text-white tracking-wide flex items-center gap-1 flex-wrap justify-center">
+                <span className="italic">Ambassador</span>
+                <span className="text-[#d4af37]">&</span>
+                <span className="italic">Ambassadress</span>
+              </span>
+              
+              <div className="flex items-center justify-center gap-2 w-full">
+                <div className="h-[1px] w-6 bg-gradient-to-r from-transparent to-[#d4af37]/60"></div>
+                <span className="text-stone-400 text-[8px] tracking-[2px] uppercase font-bold">2026</span>
+                <div className="h-[1px] w-6 bg-gradient-to-l from-transparent to-[#d4af37]/60"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Description */}
+          <p className="text-stone-400 text-[11px] font-light tracking-wide leading-relaxed max-w-xs">
+            Cast your vote for the leaders who redefine excellence through the heart of service.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-col gap-3 w-full pt-2">
+            <Link
+              to="/candidates"
+              className={`${goldBtn} px-6 py-2.5 rounded-sm font-bold text-[9px] text-[#0a1f1a] uppercase tracking-[1.5px] min-h-[44px] flex items-center justify-center w-full`}
+            >
+              Candidates
+            </Link>
+            <Link
+              to="/voting"
+              className="px-6 py-2.5 rounded-sm font-bold text-[9px] border border-[#d4af37]/50 text-[#d4af37] uppercase tracking-[1.5px] hover:bg-[#d4af37] hover:text-[#0a1f1a] transition-all duration-500 min-h-[44px] flex items-center justify-center w-full"
+            >
+              Vote Now
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Section - Desktop */}
+      <section className="hidden md:flex relative min-h-screen items-center justify-center px-6 overflow-hidden pt-0">
         {/* Ambient Royal Glow */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#d4af37]/5 rounded-full blur-[120px] animate-pulse"></div>
@@ -16,58 +76,58 @@ export const LandingPage = () => {
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-30"></div>
         </div>
 
-        <div className="relative max-w-5xl text-center z-10 px-2">
+        <div className="relative max-w-5xl text-center z-10">
           {/* Badge */}
-          <div className="inline-block mb-4 md:mb-8 px-3 sm:px-6 py-2 border border-[#d4af37]/30 rounded-full backdrop-blur-sm">
-            <p className="text-[8px] sm:text-[10px] md:text-xs uppercase tracking-[3px] sm:tracking-[5px] text-[#d4af37] font-bold">
+          <div className="inline-block mb-8 px-6 py-2 border border-[#d4af37]/30 rounded-full backdrop-blur-sm">
+            <p className="text-xs uppercase tracking-[5px] text-[#d4af37] font-bold">
               The Student Organizations Coordinating Council Presents
             </p>
           </div>
 
           {/* Majestic Headline */}
-          <div className="mb-6 md:mb-10 flex flex-col items-center">
-            <span className="block text-[10px] sm:text-xs md:text-base tracking-[3px] sm:tracking-[5px] md:tracking-[0.8em] uppercase text-stone-400 font-light mb-3 md:mb-4">
+          <div className="mb-10 flex flex-col items-center">
+            <span className="block text-base tracking-[0.8em] uppercase text-stone-400 font-light mb-4">
               The
             </span>
 
             {/* Primary Focus */}
-            <span className={`text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-black leading-tight md:leading-[0.9] block ${goldText}`}>
+            <span className={`text-7xl lg:text-8xl font-serif font-black leading-[0.9] block ${goldText}`}>
               Thomasian Youth
             </span>
 
             {/* The "Special" Emphasis Section */}
-            <div className="relative mt-3 md:mt-4 flex flex-col items-center">
-              <span className="text-base sm:text-2xl md:text-5xl lg:text-6xl font-serif font-light text-white tracking-[0.05em] sm:tracking-[0.1em] flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
+            <div className="relative mt-4 flex flex-col items-center">
+              <span className="text-5xl lg:text-6xl font-serif font-light text-white tracking-[0.1em] flex items-center justify-center gap-4">
                 <span className="italic">Ambassador</span>
-                <span className="text-[#d4af37] not-italic font-normal font-serif text-xl sm:text-3xl md:text-5xl">&</span>
+                <span className="text-[#d4af37] not-italic font-normal font-serif">&</span>
                 <span className="italic">Ambassadress</span>
               </span>
 
               {/* Elegant Sub-label for the Year */}
-              <div className="mt-3 md:mt-6 flex items-center justify-center gap-3 sm:gap-8 w-full">
-                <div className="h-[1px] flex-1 max-w-12 sm:max-w-16 md:max-w-24 bg-gradient-to-r from-transparent via-[#d4af37]/60 to-transparent"></div>
-                <span className="text-stone-400 text-[9px] sm:text-[11px] md:text-sm tracking-[3px] sm:tracking-[0.6em] uppercase font-bold whitespace-nowrap">
+              <div className="mt-6 flex items-center justify-center gap-8 w-full">
+                <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#d4af37]/60 to-transparent"></div>
+                <span className="text-stone-400 text-sm tracking-[0.6em] uppercase font-bold whitespace-nowrap">
                   2026
                 </span>
-                <div className="h-[1px] flex-1 max-w-12 sm:max-w-16 md:max-w-24 bg-gradient-to-l from-transparent via-[#d4af37]/60 to-transparent"></div>
+                <div className="h-[1px] w-24 bg-gradient-to-l from-transparent via-[#d4af37]/60 to-transparent"></div>
               </div>
             </div>
           </div>
 
-          <p className="text-stone-400 text-[12px] sm:text-sm md:text-lg font-light tracking-wide leading-relaxed max-w-2xl mx-auto mb-6 md:mb-12 px-2">
+          <p className="text-stone-400 text-lg font-light tracking-wide leading-relaxed max-w-2xl mx-auto mb-12">
             Celebrating the <span className="text-[#d4af37]">Bastions of Hope</span>. Cast your vote for the leaders who redefine excellence through the heart of service.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-2">
+          <div className="flex gap-6 justify-center">
             <Link
               to="/candidates"
-              className={`${goldBtn} px-6 sm:px-10 md:px-12 py-3 sm:py-4 md:py-5 rounded-sm font-bold text-[10px] sm:text-[11px] text-[#0a1f1a] uppercase tracking-[2px] sm:tracking-[3px] min-h-[44px] flex items-center justify-center`}
+              className={`${goldBtn} px-12 py-5 rounded-sm font-bold text-[11px] text-[#0a1f1a] uppercase tracking-[3px] min-h-[44px] flex items-center justify-center`}
             >
               Meet Our Candidates
             </Link>
             <Link
               to="/voting"
-              className="px-6 sm:px-10 md:px-12 py-3 sm:py-4 md:py-5 rounded-sm font-bold text-[10px] sm:text-[11px] border border-[#d4af37]/50 text-[#d4af37] uppercase tracking-[2px] sm:tracking-[3px] hover:bg-[#d4af37] hover:text-[#0a1f1a] transition-all duration-500 min-h-[44px] flex items-center justify-center"
+              className="px-12 py-5 rounded-sm font-bold text-[11px] border border-[#d4af37]/50 text-[#d4af37] uppercase tracking-[3px] hover:bg-[#d4af37] hover:text-[#0a1f1a] transition-all duration-500 min-h-[44px] flex items-center justify-center"
             >
               Cast Your Vote
             </Link>
