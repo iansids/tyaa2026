@@ -162,18 +162,20 @@ export const CandidatesPage = () => {
     </div>
 
     {/* THE SEAMLESS MARQUEE - Candidate Images */}
-    <div className="absolute inset-0 z-10 opacity-20 flex items-center pointer-events-none">
+    <div className="absolute inset-0 z-10 opacity-30 flex items-stretch pointer-events-none overflow-hidden">
         <div className="flex w-max animate-marquee-seamless">
         {marqueeItems.map((candidate, idx) => (
             <div 
             key={idx} 
-            className="relative w-[280px] md:w-[450px] aspect-[3/4] mx-4 md:mx-8 overflow-hidden border border-white/5 rounded-sm bg-[#0a1f1a] flex-shrink-0"
+            className="relative h-full flex-shrink-0 transition-all duration-500 overflow-hidden"
+            style={{ width: '20%', minWidth: '200px' }}
             >
             <img 
               src={candidate.image}
               alt={candidate.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
             />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a1f1a]/40 via-transparent to-[#0a1f1a]/40"></div>
             </div>
         ))}
         </div>
