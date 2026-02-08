@@ -181,11 +181,11 @@ const App = () => {
 
             <div className="grid grid-cols-2 gap-8 pt-8 border-t border-[#d4af37]/10">
                <div>
-                  <h4 className="text-4xl font-serif text-white">18</h4>
+                  <h4 className="text-4xl font-serif text-white">##</h4>
                   <p className="text-[#d4af37] uppercase tracking-tighter text-[10px] font-bold">Delegates</p>
                </div>
                <div>
-                  <h4 className="text-4xl font-serif text-white">18</h4>
+                  <h4 className="text-4xl font-serif text-white">##</h4>
                   <p className="text-[#d4af37] uppercase tracking-tighter text-[10px] font-bold">Colleges</p>
                </div>
             </div>
