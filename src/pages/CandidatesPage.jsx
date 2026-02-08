@@ -168,14 +168,14 @@ export const CandidatesPage = () => {
         <div className="flex w-max animate-marquee-seamless" style={{ animationDelay: '0s' }}>
         {marqueeItems.map((candidate, idx) => (
             <div 
-            key={`row1-${idx}`} 
-            className="relative h-full flex-shrink-0 transition-all duration-500 overflow-hidden"
+            key={`row1-${idx}`}
+            className="relative h-full flex-shrink-0 transition-all duration-500 overflow-hidden bg-[#081612] flex items-center justify-center"
             style={{ width: '20%', minWidth: '200px' }}
             >
-            <img 
+            <img
               src={candidate.image}
               alt={candidate.name}
-              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              className="w-full h-full object-contain hover:scale-110 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0a1f1a]/40 via-transparent to-[#0a1f1a]/40"></div>
             </div>
@@ -187,15 +187,15 @@ export const CandidatesPage = () => {
       <div className="flex-1 flex w-full overflow-hidden">
         <div className="flex w-max animate-marquee-seamless" style={{ animationDelay: '-20s' }}>
         {marqueeItems.map((candidate, idx) => (
-            <div 
-            key={`row2-${idx}`} 
-            className="relative h-full flex-shrink-0 transition-all duration-500 overflow-hidden"
+            <div
+            key={`row2-${idx}`}
+            className="relative h-full flex-shrink-0 transition-all duration-500 overflow-hidden bg-[#081612] flex items-center justify-center"
             style={{ width: '20%', minWidth: '200px' }}
             >
-            <img 
+            <img
               src={candidate.image}
               alt={candidate.name}
-              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              className="w-full h-full object-contain hover:scale-110 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0a1f1a]/40 via-transparent to-[#0a1f1a]/40"></div>
             </div>
@@ -207,15 +207,15 @@ export const CandidatesPage = () => {
       <div className="flex-1 flex w-full overflow-hidden">
         <div className="flex w-max animate-marquee-seamless" style={{ animationDelay: '-40s' }}>
         {marqueeItems.map((candidate, idx) => (
-            <div 
-            key={`row3-${idx}`} 
-            className="relative h-full flex-shrink-0 transition-all duration-500 overflow-hidden"
+            <div
+            key={`row3-${idx}`}
+            className="relative h-full flex-shrink-0 transition-all duration-500 overflow-hidden bg-[#081612] flex items-center justify-center"
             style={{ width: '20%', minWidth: '200px' }}
             >
-            <img 
+            <img
               src={candidate.image}
               alt={candidate.name}
-              className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              className="w-full h-full object-contain hover:scale-110 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0a1f1a]/40 via-transparent to-[#0a1f1a]/40"></div>
             </div>
