@@ -174,7 +174,7 @@ export const CandidatesPage = () => {
 
       {/* SECTION 2: THE REGISTRY GALLERY */}
       <div className="max-w-[1600px] mx-auto px-3 sm:px-4 md:px-6 py-16 sm:py-24 md:py-32">
-        <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 md:gap-20 items-start">
+        <div className="w-full flex flex-col lg:flex-row gap-8 sm:gap-12 md:gap-20 items-start">
           
         {/* SIDEBAR */}
         <aside className="hidden lg:block lg:w-96 lg:sticky lg:top-32 space-y-6 sm:space-y-8 md:space-y-12">
@@ -219,7 +219,7 @@ export const CandidatesPage = () => {
             </aside>
 
           {/* MAIN GRID */}
-          <main className="flex-1">
+          <main className="w-full lg:flex-1">
             {filteredContestants.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-4 sm:gap-x-6 md:gap-x-12 gap-y-12 sm:gap-y-16 md:gap-y-24">
                 {filteredContestants.map((candidate) => (
