@@ -141,7 +141,7 @@ export const Layout = ({ children }) => {
               <h4 className="text-white text-[10px] uppercase tracking-[4px] font-black border-b border-white/5 pb-4">Connect With Us</h4>
               <div className="space-y-4">
                 <p className="text-stone-500 text-[10px] uppercase tracking-widest leading-relaxed">
-                  Rm. 211, Tan Yan Kee Student Center, <br />
+                  Rm. 206, Tan Yan Kee Student Center, <br />
                   University of Santo Tomas, <br />
                   España Blvd., Manila
                 </p>
