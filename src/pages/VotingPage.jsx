@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { contestants } from '../data/contestants';
 
 export const VotingPage = () => {
+
+    useEffect(() => {
+      document.title = "Cast Your Vote | TYAA 2026";
+    }, []);
+
   // Navigation State
   const [step, setStep] = useState(1); 
   
