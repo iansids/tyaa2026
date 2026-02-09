@@ -156,38 +156,52 @@ export const VotingPage = () => {
       </section>
 
       {/* SELECTION PHASES */}
-      {step < 3 && (
-        <div className="max-w-7xl mx-auto px-6 pb-20 animate-fade-in space-y-8 md:space-y-12">
-          {/* Layout: Grid 1 Col on Mobile (List), Grid 3 Col on Desktop (Gallery) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
-            {(step === 1 ? ambassadors : ambassadresses).map((c) => (
-              <CandidateCard 
-                key={c.id} 
-                candidate={c} 
-                selected={(step === 1 ? ambassadorVote : ambassadressVote) === c.id} 
-                onSelect={(id) => handleSelect(id, step === 1 ? 'ambassador' : 'ambassadress')} 
-              />
-            ))}
-          </div>
+        {step < 3 && (
+            <div className="max-w-7xl mx-auto px-6 pb-20 animate-fade-in space-y-8 md:space-y-12">
+                
+                {/* CHANGED FROM 'grid' TO 'flex flex-wrap' 
+                    - 'justify-center' centers the items in the last row.
+                    - 'gap-6' maintains spacing.
+                */}
+                <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+                {(step === 1 ? ambassadors : ambassadresses).map((c) => (
+                    /* Give each card a base width for mobile and a 
+                    fixed percentage width for the 5-per-row desktop look.
+                    w-[calc(100%-1rem)] = Mobile (1 col)
+                    sm:w-[calc(50%-1.5rem)] = Tablet (2 cols)
+                    lg:w-[calc(20%-1.5rem)] = Desktop (5 cols)
+                    */
+                    <div 
+                    key={c.id} 
+                    className="w-full sm:w-[calc(50%-1.5rem)] md:w-[calc(33.33%-1.5rem)] xl:w-[calc(20%-1.5rem)] min-w-[200px]"
+                    >
+                    <CandidateCard 
+                        candidate={c} 
+                        selected={(step === 1 ? ambassadorVote : ambassadressVote) === c.id} 
+                        onSelect={(id) => handleSelect(id, step === 1 ? 'ambassador' : 'ambassadress')} 
+                    />
+                    </div>
+                ))}
+                </div>
 
-          {/* ABSTAIN OPTION */}
-          <div className="flex justify-center pt-4">
+            {/* ABSTAIN OPTION */}
+            <div className="flex justify-center pt-4">
             <button 
-              onClick={() => handleSelect('none', step === 1 ? 'ambassador' : 'ambassadress')}
-              className="flex items-center gap-4 group py-4 px-8 border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all w-full md:w-auto justify-center"
+                onClick={() => handleSelect('none', step === 1 ? 'ambassador' : 'ambassadress')}
+                className="flex items-center gap-4 group py-4 px-8 border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all w-full md:w-auto justify-center"
             >
-              <div className={`w-5 h-5 border flex items-center justify-center transition-all ${
+                <div className={`w-5 h-5 border flex items-center justify-center transition-all ${
                 (step === 1 ? ambassadorVote : ambassadressVote) === 'none' ? 'border-[#d4af37] bg-[#d4af37]' : 'border-white/30'
-              }`}>
+                }`}>
                 {(step === 1 ? ambassadorVote : ambassadressVote) === 'none' && <span className="text-[#0a1f1a] text-xs font-black">✓</span>}
-              </div>
-              <span className={`text-[10px] uppercase tracking-[3px] ${(step === 1 ? ambassadorVote : ambassadressVote) === 'none' ? 'text-[#d4af37]' : 'text-stone-500'}`}>
+                </div>
+                <span className={`text-[10px] uppercase tracking-[3px] ${(step === 1 ? ambassadorVote : ambassadressVote) === 'none' ? 'text-[#d4af37]' : 'text-stone-500'}`}>
                 Abstain from this selection
-              </span>
+                </span>
             </button>
-          </div>
+            </div>
         </div>
-      )}
+        )}
 
       {/* VERIFICATION STEP (3) */}
       {step === 3 && (

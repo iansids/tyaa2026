@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { contestants } from '../data/contestants';
+import { contestants } from '../data/contestants';;
 
 export const CandidateDetailsPage = () => {
+
+     useEffect(() => {
+    document.title = `${candidate ? candidate.name : ''} | TYAA 2026`;
+    }, []);
+
   const { id } = useParams();
   const candidate = contestants.find((c) => c.id === parseInt(id));
 
