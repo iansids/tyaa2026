@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 const useScrollReveal = () => {
+
+    useEffect(() => {
+      document.title = "Thomasian Youth Ambassador & Ambassadress";
+    }, []);
+
   const [hasRevealed, setHasRevealed] = useState(false);
   const ref = useRef(null);
 

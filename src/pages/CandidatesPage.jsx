@@ -4,7 +4,7 @@ import { contestants } from '../data/contestants';
 
 export const CandidatesPage = () => {
   useEffect(() => {
-    document.title = "People's Choice Award| TYAA 2026";
+    document.title = "Candidates | TYAA 2026";
   }, []);
 
   const [selectedCollege, setSelectedCollege] = useState('All');
