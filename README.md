@@ -1,16 +1,49 @@
-# React + Vite
+# 🏛️ TYAA 2026: The Bastions of Hope
+### Official People's Choice Award Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-fidelity, prestige-styled web application built with **React** and **Tailwind CSS**. This platform serves as the official digital registry and voting portal for the **Thomasian Youth Ambassador & Ambassadress (TYAA) 2026**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Key Features
 
-## React Compiler
+* **Prestige Editorial UI**: A high-end aesthetic using a deep emerald and gold color palette, serif typography, and elegant transitions.
+* **Infinite Marquee Hero**: A seamless, multi-speed candidate showcase on the landing page for an immersive introduction.
+* **Secure Voting System**: 
+    * 3-Phase flow: Ambassador Selection → Ambassadress Selection → Identity Verification.
+    * **UST Domain Validation**: Strictly restricts voting to `@ust.edu.ph` email addresses.
+    * **OTP Simulation**: Integrated 6-digit code verification and resend timer logic.
+* **Smart Candidate Grid**: A custom responsive layout that ensures exactly 5 candidates per row on desktop, with "orphaned" items automatically centered for visual balance.
+* **Institution Filtering**: Dynamic sidebar and mobile dropdown to filter candidates by their respective faculties/colleges.
+* **SEO & Tab Management**: Static and dynamic document title updates (e.g., "Candidates | TYAA 2026") for professional browser tab navigation.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Technical Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Technology | Purpose |
+| :--- | :--- |
+| **React (Vite)** | Core Frontend Framework |
+| **Tailwind CSS** | Utility-first Styling & Animations |
+| **React Router DOM** | Client-side Navigation |
+| **Framer Motion / CSS Keyframes** | High-performance Marquees & Fade-ins |
+| **Lucide React** | (Optional) Iconography |
+
+---
+
+## 📂 Project Structure
+
+```text
+tyaa-peoples-choice/
+├── public/
+│   └── images/
+│       └── candidates/      # Headshot assets (ambassador.webp, ambassadress.avif)
+├── src/
+│   ├── data/
+│   │   └── contestants.js   # Centralized data (Bios, Advocacies, Image paths)
+│   ├── pages/
+│   │   ├── CandidatesPage.jsx # The Registry Gallery
+│   │   └── VotingPage.jsx     # The 3-Step Ballot system
+│   ├── App.jsx              # Routing and Helmet Provider
+│   └── main.jsx             # Entry point
+└── tailwind.config.js       # Custom gold-gradient and animation extensions
