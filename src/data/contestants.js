@@ -18,7 +18,7 @@ export const contestants = [
     gender: "female", 
     bio: "Dedicated to human rights defense and empowering the voiceless through the power of the constitution.",
     advocacy: "Speak for the Silent: Providing legal education and support for victims of domestic abuse.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // Faculty of Medicine and Surgery
@@ -40,7 +40,7 @@ export const contestants = [
     gender: "female", 
     bio: "Advocating for holistic wellness and the destigmatization of mental health within the medical field.",
     advocacy: "Mind the Gap: Mental health awareness and support systems for medical professionals.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // Faculty of Pharmacy
@@ -62,7 +62,7 @@ export const contestants = [
     gender: "female", 
     bio: "Championing patient safety through rigorous research and community-based health education.",
     advocacy: "Project Curative: Educating youth on the global dangers of antimicrobial resistance (AMR).",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // Faculty of Arts and Letters
@@ -84,7 +84,7 @@ export const contestants = [
     gender: "female", 
     bio: "Exploring the power of storytelling and investigative journalism to uphold truth and accountability.",
     advocacy: "The Art of Truth: Fighting disinformation through critical thinking and fact-checking workshops.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // Faculty of Engineering
@@ -106,7 +106,7 @@ export const contestants = [
     gender: "female", 
     bio: "Advocating for the empowerment of women in STEM and the advancement of renewable energy.",
     advocacy: "STEM-in-Gems: Mentorship programs for young women in heavy-industrial engineering.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // College of Architecture
@@ -128,7 +128,7 @@ export const contestants = [
     gender: "female", 
     bio: "Designing for the future by prioritizing biophilic elements and eco-conscious construction.",
     advocacy: "Green Spaces: Advocating for inclusive, sustainable public parks in high-density areas.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // College of Commerce and Business Administration
@@ -150,7 +150,7 @@ export const contestants = [
     gender: "female", 
     bio: "Committed to sustainable business models that empower local artisans and micro-entrepreneurs.",
     advocacy: "Ethical Trade: Bridging local producers to the global market through fair-trade practices.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // College of Education
@@ -172,7 +172,7 @@ export const contestants = [
     gender: "female", 
     bio: "Advocating for inclusive education systems that cater to students with diverse learning needs.",
     advocacy: "Inclusive Classrooms: Specialized training for teachers handling neurodivergent students.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // College of Science
@@ -194,7 +194,7 @@ export const contestants = [
     gender: "female", 
     bio: "Dedicated to marine conservation and the protection of biodiversity through rigorous ecological studies.",
     advocacy: "Eco-Science: Marine conservation through the reduction of microplastics in coastal waters.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // College of Nursing
@@ -216,7 +216,7 @@ export const contestants = [
     gender: "female", 
     bio: "Championing maternal and child health education as the foundation of a healthy nation.",
     advocacy: "The First 1,000 Days: Nutritional support and education for underprivileged mothers.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // College of Rehabilitation Sciences
@@ -238,7 +238,7 @@ export const contestants = [
     gender: "female", 
     bio: "Advocating for early intervention in speech-language pathology to give every child a voice.",
     advocacy: "Silent No More: Early detection programs for speech disorders in rural youth.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // College of Fine Arts and Design (CFAD)
@@ -260,7 +260,7 @@ export const contestants = [
     gender: "female", 
     bio: "Integrating traditional Filipino textiles into modern fashion to preserve indigenous culture.",
     advocacy: "Wearable Culture: Supporting local weavers through contemporary design integration.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // AMV-College of Accountancy
@@ -282,7 +282,7 @@ export const contestants = [
     gender: "female", 
     bio: "Advocating for financial literacy among small business owners to foster long-term stability.",
     advocacy: "Tax-Wise Youth: Simplifying complex taxation concepts for local micro-businesses.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // College of Tourism and Hospitality Management (CTHM)
@@ -304,7 +304,7 @@ export const contestants = [
     gender: "female", 
     bio: "Advancing global standards of Filipino service while preserving regional culinary traditions.",
     advocacy: "The Global Host: Elevating Pinoy hospitality through cultural heritage preservation.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // College of Information and Computing Sciences (CICS)
@@ -326,7 +326,7 @@ export const contestants = [
     gender: "female", 
     bio: "Exploring ethical AI and cybersecurity to ensure a safe and equitable digital future.",
     advocacy: "CyberSafe PH: Protecting children and vulnerable groups from online exploitation.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   },
 
   // Institute of Physical Education and Athletics (IPEA)
@@ -348,6 +348,6 @@ export const contestants = [
     gender: "female", 
     bio: "Advocating for inclusivity in athletics and the holistic development of student-athletes.",
     advocacy: "The Empowered Athlete: Breaking gender stereotypes in professional contact sports.",
-    image: "/images/candidates/ambassadress.avif"
+    image: "/images/candidates/ambassadress.jpeg"
   }
 ];
